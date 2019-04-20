@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: Circuit Breaker Demo
+    admin:
+      enabled: true
+
+services:
+  endpoints:
+    baseUrl: https://jsonplaceholder.typicode.com
+    albums: ${services.endpoints.baseUrl}/albums
+    comments: ${services.endpoints.baseUrl}/comments
+    photos: ${services.endpoints.baseUrl}/photos
+    posts: ${services.endpoints.baseUrl}/posts
+    todos: ${services.endpoints.baseUrl}/todos
+    users: ${services.endpoints.baseUrl}/users
