@@ -27,11 +27,25 @@ resilience4j:
         failureRateThreshold: 50
         eventConsumerBufferSize: 10
         ignoreExceptions:
+      posts:
+        registerHealthIndicator: true
+        ringBufferSizeInClosedState: 5
+        ringBufferSizeInHalfOpenState: 3
+        waitInterval: 5000
+        failureRateThreshold: 50
+        eventConsumerBufferSize: 10
+        ignoreExceptions:
   retry:
     backends:
       users:
         maxRetryAttempts: 3
         waitDuration: 500
+        enableExponentialBackoff: false
+      posts:
+        maxRetryAttempts: 4
+        waitDuration: 1000
+        enableExponentialBackoff: true
+        exponentialBackoffMultiplier: 3.0
 
 management:
   endpoints:
