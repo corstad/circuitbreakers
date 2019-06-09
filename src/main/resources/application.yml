@@ -13,3 +13,29 @@ services:
     posts: ${services.endpoints.baseUrl}/posts
     todos: ${services.endpoints.baseUrl}/todos
     users: ${services.endpoints.baseUrl}/users
+
+resilience4j:
+  circuitbreaker:
+    metrics:
+      enabled: true
+    backends:
+      users:
+        registerHealthIndicator: true
+        ringBufferSizeInClosedState: 5
+        ringBufferSizeInHalfOpenState: 3
+        waitInterval: 5000
+        failureRateThreshold: 50
+        eventConsumerBufferSize: 10
+        ignoreExceptions:
+  retry:
+    backends:
+      users:
+        maxRetryAttempts: 3
+        waitDuration: 500
+
+management:
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: "*"
