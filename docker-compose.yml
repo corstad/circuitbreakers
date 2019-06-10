@@ -1,0 +1,8 @@
+version: "3.7"
+services:
+  jsonplaceholder-service-chaos-proxy:
+    image: andymacdonald/clusterf-chaos-proxy
+    environment:
+      JAVA_OPTS: "-Dchaos.strategy=RANDOM_HAVOC -Ddestination.hostProtocolAndPort=https://jsonplaceholder.typicode.com"
+    ports:
+      - "15005:8080"

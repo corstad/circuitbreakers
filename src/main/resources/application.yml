@@ -6,7 +6,7 @@ spring:
 
 services:
   endpoints:
-    baseUrl: https://jsonplaceholder.typicode.com
+    baseUrl: http://localhost:15005
     albums: ${services.endpoints.baseUrl}/albums
     comments: ${services.endpoints.baseUrl}/comments
     photos: ${services.endpoints.baseUrl}/photos
